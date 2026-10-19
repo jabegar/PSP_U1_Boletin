@@ -29,7 +29,7 @@ public class LanzadorCalculaSuma {
 	}
 	
 	public void compilaCalculaSuma(String rutaCompila, String rutaClass, String nombreClass) throws IOException, InterruptedException {
-		File clase = new File(rutaClass + nombreClass.replaceAll(".", "/"));
+		File clase = new File(rutaClass + nombreClass.replace(".", "/"));
 		
 		if (!clase.exists()) {	
 			ProcessBuilder pb = new ProcessBuilder("javac", "-d", rutaClass,  rutaCompila);
