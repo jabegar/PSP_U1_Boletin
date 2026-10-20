@@ -19,11 +19,11 @@ public class LanzadorContadorPalabras {
 		}
 		
 		try {
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt ", "servicio");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt ", "hilo");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt ", "proceso");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt ", "multihilo");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt ", "concurrencia");
+			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "servicio");
+			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "hilo");
+			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "proceso");
+			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "multihilo");
+			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "concurrencia");
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} catch (InterruptedException e) {
