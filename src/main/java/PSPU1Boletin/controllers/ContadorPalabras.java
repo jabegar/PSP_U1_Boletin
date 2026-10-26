@@ -41,12 +41,12 @@ public class ContadorPalabras {
 		try {
 			FileReader fr = new FileReader(f);
 			Scanner sc = new Scanner(fr);
-			sc.useLocale(Locale.ENGLISH);
 
 			while(sc.hasNext()) {
 				String palabra = sc.next();
 				palabras.add(palabra);
 			}
+			sc.close();
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}

@@ -11,22 +11,18 @@ import java.util.Scanner;
 
 public class AnalizadorTemperaturas {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		AnalizadorTemperaturas at = new AnalizadorTemperaturas();
 		
 		String rutaLeer = args[0];
 		int umbral = Integer.parseInt(args[1]);
 		
 		List<Integer> temps;
-		try {
-			temps = at.leerArchivo(rutaLeer);
-			int supera = at.superaUmbral(temps, umbral);
-			System.out.println(supera);
+		temps = at.leerArchivo(rutaLeer);
+		int supera = at.superaUmbral(temps, umbral);
+		System.out.println(supera);
 		
-			at.escribeFichero(umbral, supera);
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		}
+//		at.escribeFichero(umbral, supera);
 	}
 	
 	public List<Integer> leerArchivo(String ruta) throws FileNotFoundException {
@@ -57,7 +53,7 @@ public class AnalizadorTemperaturas {
 	public void escribeFichero(int umbral, int superado) throws FileNotFoundException {
 		File file = new File("src/main/resources/" + umbral + ".txt");
 		PrintWriter pw = new PrintWriter(file);
-		pw.println("La temperatura de " + umbral + " se ha superado " + superado + " veces");
+		pw.println(superado);
 		pw.close();
 	}
 }

@@ -2,6 +2,7 @@ package PSPU1Boletin.controllers;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class LanzadorContadorPalabras {
 	public static void main(String[] args) {
@@ -19,11 +20,10 @@ public class LanzadorContadorPalabras {
 		}
 		
 		try {
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "servicio");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "hilo");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "proceso");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "multihilo");
-			lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", "concurrencia");
+			String[] palabras = {"servicio", "hilo", "proceso", "multihilo", "concurrencia"};
+			for (int i = 0; i < palabras.length; i++) {
+				lzc.ejecutaContadorPalabras(rutaClass, nombreClass, "src/main/resources/texto_servicio_hilo_proceso_multihilo_concurrencia.txt", palabras[i]);
+			}
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} catch (InterruptedException e) {
@@ -32,7 +32,7 @@ public class LanzadorContadorPalabras {
 	}
 	
 	public void compilaContadorPalabras(String rutaCompila, String rutaClass, String nombreClass) throws IOException, InterruptedException {
-		File clase = new File(rutaClass + nombreClass.replace(".", "/"));
+		File clase = new File(rutaClass + '/' + nombreClass.replace(".", "/"));
 		
 		if (!clase.exists()) {	
 			ProcessBuilder pb = new ProcessBuilder("javac", "-d", rutaClass,  rutaCompila);
@@ -46,14 +46,14 @@ public class LanzadorContadorPalabras {
 		}
 	}
 	
-	public void ejecutaContadorPalabras(String ruta, String nombreClass, String par, String max) throws IOException, InterruptedException {
-		String[] comando = {"java", "-cp", ruta, nombreClass, par, max};
+	public void ejecutaContadorPalabras(String ruta, String nombreClass, String rutaArchivoTXT, String buscaPalabra) throws IOException, InterruptedException {
+		String[] comando = {"java", "-cp", ruta, nombreClass, rutaArchivoTXT, buscaPalabra};
 		ProcessBuilder pb = new ProcessBuilder(comando);
 		pb.redirectErrorStream(true);
 		pb.inheritIO();
 		Process p = pb.start();
-		int exit = p.waitFor();
-		System.out.println("Codigo de salida: " + exit);
+//		int exit = p.waitFor();
+//		System.out.println("Codigo de salida: " + exit);
 		
 	}
 }

@@ -30,7 +30,7 @@ public class LanzadorCalculaMultiplicacion {
 	}
 	
 	public void compilaCalculaMultiplicacion(String rutaCompila, String rutaClass, String nombreClass) throws IOException, InterruptedException {
-		File clase = new File(rutaClass + nombreClass.replace(".", "/"));
+		File clase = new File(rutaClass + '/' + nombreClass.replace(".", "/"));
 		
 		if (!clase.exists()) {	
 			ProcessBuilder pb = new ProcessBuilder("javac", "-d", rutaClass,  rutaCompila);
